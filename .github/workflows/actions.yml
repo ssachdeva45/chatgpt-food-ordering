@@ -35,7 +35,7 @@ jobs:
         with:
           host: ${{ env.EC2_INSTANCE_IP }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             sudo systemctl stop ${{ env.APP_NAME }}
         
@@ -44,7 +44,7 @@ jobs:
         with:
           host: ${{ env.EC2_INSTANCE_IP }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
           local: target/${{ env.JAR_FILE }}
           remote: /home/ec2-user/${{ env.JAR_FILE }}
           
@@ -53,6 +53,6 @@ jobs:
         with:
           host: ${{ env.EC2_INSTANCE_IP }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             sudo systemctl start ${{ env.APP_NAME }}
