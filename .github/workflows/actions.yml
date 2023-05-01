@@ -29,6 +29,12 @@ jobs:
           
       - name: Build with Maven
         run: mvn clean install -Dmaven.test.skip=true
+
+      - name: Deploy to AWS CloudFormation (${{ matrix.environment }}-${{ env.STACK_ID }}) (${{ matrix.region }})
+        shell: bash
+        run: |
+          ls -ltr
+          ls -ltr target
         
       - name: Stop running app
         uses: appleboy/ssh-action@master
