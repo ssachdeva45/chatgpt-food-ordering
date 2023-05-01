@@ -51,8 +51,8 @@ jobs:
           host: ${{ env.EC2_INSTANCE_IP }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          local: target/${{ env.JAR_FILE }}
-          remote: /home/ec2-user/${{ env.JAR_FILE }}
+          source: target/${{ env.JAR_FILE }}
+          target: /home/ec2-user/${{ env.JAR_FILE }}
           
       - name: Start app on EC2 instance
         uses: appleboy/ssh-action@master
