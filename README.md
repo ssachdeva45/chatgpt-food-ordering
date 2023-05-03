@@ -2,7 +2,7 @@
 
 
 ## Requirements
-    JDK 11 or later
+    JDK 8 or later
     MySQL server 5.7 or later
 
 
@@ -55,6 +55,43 @@ Response
 {
   "id": 1,
   "message": "Order created successfully"
+  "total": 15.93,
+  "creationDate": "2023-05-03"
 }
 
-``
+```
+
+### Get Order List
+
+Get List of all orders.
+
+URL: /orders
+
+Method: GET
+
+
+Response
+
+```
+[
+    {
+        "id": 1,
+        "message": "Order created successfully",
+        "total": 15.93,
+        "creationDate": "2023-05-03"
+    },
+    {
+        "id": 2,
+        "message": "Order created successfully",
+        "total": 9.1,
+        "creationDate": "2023-05-03"
+    },
+    {
+        "id": 3,
+        "message": "Order created successfully",
+        "total": 12.72,
+        "creationDate": "2023-05-03"
+    }
+]
+
+```
