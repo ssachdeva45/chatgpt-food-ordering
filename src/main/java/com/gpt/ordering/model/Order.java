@@ -1,9 +1,13 @@
 package com.gpt.ordering.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity(name = "orders")
 public class Order {
@@ -14,8 +18,17 @@ public class Order {
 
     private String message;
 
-    // Getters and setters omitted for brevity
+    @Column(name = "creation_date_time")
+    private LocalDateTime creationDateTime;
 
+    private double total;
+
+    @PrePersist
+    public void prePersist() {
+        this.creationDateTime = LocalDateTime.now();
+    }
+
+    // Getters and setters omitted for brevity
     public Long getId() {
         return id;
     }
@@ -31,4 +44,27 @@ public class Order {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
+    public LocalDate getCreationDate() {
+        //if creationDateTime is null return current date
+        if (creationDateTime == null) {
+            return LocalDate.now();
+        }
+        return creationDateTime.toLocalDate();
+    }
+
+    public void setCreationDateTime(LocalDateTime creationDateTime) {
+        this.creationDateTime = creationDateTime;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+
 }
