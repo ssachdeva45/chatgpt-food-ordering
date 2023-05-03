@@ -23,6 +23,8 @@ public class Order {
 
     private double total;
 
+    private String status;
+
     @PrePersist
     public void prePersist() {
         this.creationDateTime = LocalDateTime.now();
@@ -66,5 +68,8 @@ public class Order {
         this.total = total;
     }
 
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 
 }

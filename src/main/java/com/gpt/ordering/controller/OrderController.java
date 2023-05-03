@@ -26,7 +26,8 @@ public class OrderController {
 
         // Create a new order
         Order order = new Order();
-        order.setMessage("Order created successfully");
+        order.setMessage("Your Order has been placed");
+        order.setStatus("PLACED");
         order.setTotal(total);
         orderRepository.save(order);
 
